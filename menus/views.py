@@ -21,7 +21,7 @@ def edit_restaurants(request, restaurant_id):
         restaurant.save()
         return redirect("/")
     else:
-        return render(request, "restaurants/edit_restaurants.html", {'restaurant': restaurant})
+        return render(request, "restaurants/edit_restaurant.html", {'restaurant': restaurant})
 
 
 def show_menu_itens(request, restaurant_id):
