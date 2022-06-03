@@ -26,8 +26,7 @@ def edit_restaurants(request, restaurant_id):
 
 def show_menu_itens(request, restaurant_id):
     """ Show a menus by category for a restaurant """
-    menu_itens = MenuItem.objects.filter(
-        restaurant_id=restaurant_id).order_by('category')
+    menu_itens = MenuItem.objects.filter(restaurant_id=restaurant_id).order_by('category')
     context = {'restaurants': restaurant_id, 'menu_itens': menu_itens}
     return render(request, "menus/show_menu_itens.html", context)
 
