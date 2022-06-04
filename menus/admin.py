@@ -4,4 +4,6 @@ from django.contrib import admin
 
 from menus.models import Restaurant , MenuItem
 
-admin.site.register(Restaurant,MenuItem)
+# Esses modelos foram registrados para serem usados pela interface do Admins
+admin.site.register(Restaurant)
+admin.site.register(MenuItem)
