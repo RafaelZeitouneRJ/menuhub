@@ -1,0 +1,17 @@
+{% extends 'application.html' %}
+{% block content %}
+    
+<h1>Itens do Menu</h1>
+<a href="{{restaurant_id}}/new/">Incluir</a>
+{% if menu_itens %}
+    {% for menu_item in menu_itens %}
+        <a href="{{menu_item.restaurant_id}}/edit/{{menu_item.id}}">Edit|</a>
+        <a href="{{menu_item.restaurant_id}}/delete/{{menu_item.id}}">Delete</a>
+    {% endfor %}
+{% else %}
+    <p> Nenhum item no Menu, por favor Inclua um. </p>
+{% endif %}
+
+{% endblock content %}
+
+
