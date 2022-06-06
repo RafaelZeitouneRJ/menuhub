@@ -4,7 +4,10 @@ from menus.models import MenuItem, Restaurant
 
 # Create your views here.
 
+# Autor: Rafael Zeitoune
+# última Alteração: 06/06/2022
 
+# -------------------Views do modelo Restaurant----------------------------------------------
 def show_restaurants(request):
     """ Show restaurants by name """
     restaurants = Restaurant.objects.order_by('name')
@@ -22,6 +25,9 @@ def edit_restaurants(request, restaurant_id):
         return redirect("/")
     else:
         return render(request, "restaurants/edit_restaurant.html", {'restaurant': restaurant})
+
+
+#----------------Views do modelo MenuItem --------------------------------------------------
 
 
 def show_menu_itens(request, restaurant_id):
