@@ -8,6 +8,8 @@ from menus.models import MenuItem, Restaurant
 # última Alteração: 06/06/2022
 
 # -------------------Views do modelo Restaurant----------------------------------------------
+
+
 def show_restaurants(request):
     """ Show restaurants by name """
     restaurants = Restaurant.objects.order_by('name')
@@ -27,18 +29,19 @@ def edit_restaurants(request, restaurant_id):
         return render(request, "restaurants/edit_restaurant.html", {'restaurant': restaurant})
 
 
-#----------------Views do modelo MenuItem --------------------------------------------------
+# ----------------Views do modelo MenuItem --------------------------------------------------
 
 
 def show_menu_itens(request, restaurant_id):
     """ Show a menus by category for a restaurant """
-    menu_itens = MenuItem.objects.filter(restaurant_id=restaurant_id).order_by('category')
+    menu_itens = MenuItem.objects.filter(
+        restaurant_id=restaurant_id).order_by('category')
     context = {'restaurants': restaurant_id, 'menu_itens': menu_itens}
     return render(request, "menus/show_menu_itens.html", context)
 
 
 def new_menu_item(request, restaurant_id):
-    """Create a new menu item for restaurant"""
+    """create a new menu item for restaurant"""
     if request.method == 'POST':
         form_data = request.POST
         menu_item = MenuItem()
@@ -50,4 +53,4 @@ def new_menu_item(request, restaurant_id):
         menu_item.save()
         return redirect(f"/menus/{restaurant_id}")
     else:
-        return render(request, "menus/new_menu_itens.html", {'restaurant_id': restaurant_id})
+        return render(request, 'menus/new_menu_item.html', {'restaurant_id': restaurant_id})
